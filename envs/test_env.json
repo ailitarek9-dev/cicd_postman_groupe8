@@ -1,16 +1,16 @@
 {
-	"id": "6286923e-6439-4c06-8cc9-e019257a042e",
-	"name": "prod",
+	"id": "0d222394-6b5a-4f01-9890-f4f95bf8a860",
+	"name": "test",
 	"values": [
 		{
 			"key": "url",
-			"value": "https://api.restful-api.dev",
+			"value": "https://api.restful-api.dev/objects",
 			"type": "default",
 			"enabled": true
 		}
 	],
 	"color": null,
 	"_postman_variable_scope": "environment",
-	"_postman_exported_at": "2026-06-24T09:17:50.882Z",
+	"_postman_exported_at": "2026-06-24T09:17:59.344Z",
 	"_postman_exported_using": "Postman/12.15.8"
 }
