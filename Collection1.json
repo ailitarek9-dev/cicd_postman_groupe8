@@ -1,0 +1,126 @@
+{
+  "info": {
+    "_postman_id": "a5e50f73-4133-41d4-8427-4ade358107e0",
+    "name": "New Collection-1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55569112",
+    "_collection_link": "https://go.postman.co/collection/55569112-a5e50f73-4133-41d4-8427-4ade358107e0?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "receperer les produit Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"receperer un produit\", function () {\r",
+              "    \r",
+              "    let body_res=pm.response.json()\r",
+              "    let produit_res =body_res[9];\r",
+              "    \r",
+              "    \r",
+              "    pm.collectionVariables.set(\"produitId1\",produit_res.id)\r",
+              "});\r",
+              "\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/objects",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "objects"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "receperer produit Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/objects/{{produitId1}}",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "objects",
+            "{{produitId1}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "produitId1",
+      "value": ""
+    }
+  ]
+}

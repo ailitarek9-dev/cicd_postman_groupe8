@@ -1,0 +1,105 @@
+{
+  "info": {
+    "_postman_id": "e32b9d1c-4ced-47c1-92b3-fab5bf654085",
+    "name": "New Collection-2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55569112",
+    "_collection_link": "https://go.postman.co/collection/55569112-e32b9d1c-4ced-47c1-92b3-fab5bf654085?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "creer produit Copy",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "let random_price =Math.random()*(2000.99-500+1)+500\r",
+              "pm.collectionVariables.set(\"random_price\",random_price.toFixed(2))\r",
+              "\r",
+              "let random_year = Math.floor(Math.random()*(2026-2016+1))+2026\r",
+              "pm.collectionVariables.set(\"random_year\",random_year)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"verifier les response\", function () {\r",
+              "    //receperer body\r",
+              "    let body_req = JSON.parse(pm.request.body.raw)\r",
+              "    let name_req = body_req.name\r",
+              "    let year_req = body_req.data.year\r",
+              "    let price_req = body_req.data.price\r",
+              "    let CPUmodel_req = body_req.data[\"CPUmodel\"]\r",
+              "    //receperer response\r",
+              "    let body_res = pm.response.json()\r",
+              "    let name_res = body_res.name\r",
+              "    let year_res = body_res.data.year\r",
+              "    let price_res = body_res.data.price\r",
+              "    let CPUmodel_res = body_res.data[\"CPUmodel\"]\r",
+              "    //assertion\r",
+              "    pm.expect(name_req).equal(name_res)\r",
+              "    pm.expect(year_req).equal(year_res)\r",
+              "    pm.expect(price_req).equal(price_res)\r",
+              "    pm.expect(CPUmodel_req).equal(CPUmodel_res)\r",
+              "\r",
+              "    let id_res= body_res.id\r",
+              "    pm.collectionVariables.set(\"id_module\",id_res)\r",
+              "\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"{{$randomProductName}}\",\r\n  \"data\": {\r\n    \"year\": \"{{random_year}}\",\r\n    \"price\": \"{{random_price}}\",\r\n    \"CPU model\": \"Intel Core i{{$randomInt}}\"\r\n\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/objects",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "objects"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "random_price",
+      "value": ""
+    },
+    {
+      "key": "random_year",
+      "value": ""
+    },
+    {
+      "key": "id_module",
+      "value": ""
+    }
+  ]
+}

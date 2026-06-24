@@ -1,0 +1,16 @@
+{
+	"id": "bbf65265-afe4-4244-bc4f-cece6df58d60",
+	"name": "preprod",
+	"values": [
+		{
+			"key": "url",
+			"value": "https://api.restful-api.dev",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-06-24T08:54:30.639Z",
+	"_postman_exported_using": "Postman/12.15.8"
+}
