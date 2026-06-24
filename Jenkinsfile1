@@ -1,0 +1,25 @@
+pipeline {
+    agent {
+        docker
+        { 
+            image 'postman/newman:latest'
+            args '-u=root --entrypoint='
+        }  
+    }
+
+    stages {
+        stage('lancer la premier collection') {
+            steps {
+                
+                echo 'test est fait'  
+                sh 'newman run collection.json'
+            }
+        }
+    }   
+        post{
+        success{
+            eco"le test a été lancé"
+            build job:'job_col2',wait: true
+        }
+    }
+}
