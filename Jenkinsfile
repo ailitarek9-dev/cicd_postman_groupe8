@@ -25,12 +25,12 @@ pipeline {
                 }
                 else{
                     switch(params.environment) {
-                        case prod:
-                            sh 'newman run collection2.json -e' +${params.environment}+.'json'
+                        case prod_env:
+                            sh 'newman run collection2.json -e./envs/' +${params.environment}+.'json'
                         break
-                        default
-                        sh 'newman run collection1.json -e' + ${params.environment}+ '.json'
-                        sh 'newman run collection1.json -e'+ ${params.environment}+'.json'
+                        default :
+                            sh 'newman run collection1.json -e./envs/' + ${params.environment}+ '.json'
+                            sh 'newman run collection1.json -e./envs/'+ ${params.environment}+'.json'
                         }
                     }        
                 }
