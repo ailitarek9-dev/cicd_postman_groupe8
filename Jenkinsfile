@@ -8,7 +8,7 @@ pipeline {
     }
     parameters {
         choice(name: 'environment', choices: ['preprod_env', 'prod_env', 'test_env'], description: 'Chosissez une environment')
-        booleanParam(name: 'selection', defaultValue: true, description: 'Lancer avec chaque test test')
+        booleanParam(name: 'selection', defaultValue: true, description: 'Lancer avec chaque test')
         booleanParam(name: 'tous', defaultValue: true, description: 'Lancer tous les test')
     }
     stages {
